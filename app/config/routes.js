@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-var ReactRouter = require('react-router-dom');
-var Router = ReactRouter.BrowserRouter;
-var Route = ReactRouter.Route;
+var ReactRouter = require('react-router-dom')
+var Router = ReactRouter.BrowserRouter
+var Route = ReactRouter.Route
 import { MainContainer } from '../containers'
 
 class Routes extends Component {
@@ -14,4 +14,4 @@ class Routes extends Component {
   }
 }
 
-export default Routes;
+export default Routes
