@@ -1,17 +1,11 @@
-import React, { Component } from 'react'
-var ReactRouter = require('react-router-dom')
-var Router = ReactRouter.BrowserRouter
-var Route = ReactRouter.Route
-import { MainContainer } from '../containers'
+import React from 'react'
+import { Router, Route, hashHistory } from 'react-router'
+import { MainContainer } from 'containers'
 
-class Routes extends Component {
-  render () {
-    return (
-      <Router>
-        <Route exact path='/' component={MainContainer} />
-      </Router>
-    )
-  }
-}
+const routes = (
+  <Router history={hashHistory}>
+    <Route path='/' component={MainContainer} />
+  </Router>
+)
 
-export default Routes
+export default routes

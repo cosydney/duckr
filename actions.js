@@ -201,3 +201,4 @@
 {
   type: FETCHING_LIKES_SUCCESS,
   likes,
+}
