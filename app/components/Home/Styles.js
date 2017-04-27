@@ -7,22 +7,12 @@ const {width, height, scale} = Dimensions.get("window"),
 
 export default StyleSheet.create({
     "container": {
-        "display": "flex",
-        "justifyContent": "center",
-        "alignItems": "center",
-        "flexDirection": "column"
+        "composes": "centeredContainer from 'sharedStyles/styles.css'"
     },
     "title": {
-        "color": "#4a90e2",
-        "fontWeight": "100",
-        "fontSize": 100,
-        "marginBottom": 20
+        "composes": "largeHeader from 'sharedStyles/styles.css'"
     },
     "slogan": {
-        "color": "#4a90e2",
-        "fontSize": 35,
-        "textAlign": "center",
-        "lineHeight": 55,
-        "fontWeight": "100"
+        "composes": "subHeader from 'sharedStyles/styles.css'"
     }
 });

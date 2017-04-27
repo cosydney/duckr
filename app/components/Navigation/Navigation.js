@@ -1,32 +1,38 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import { Link } from 'react-router'
+import { container, navContainer, link } from './styles.css'
+var PropTypes = require('prop-types')
 
-function NavLinks (isAuthed) {
-  return isAuthed === true
-  ? <ul>
-      <li><Link to ='/'>{'Home'}</Link></li>
-    </ul>
-  : null
+Navigation.propTypes = ActionLinks.propTypes = NavLinks.propTypes = {
+  isAuthed: PropTypes.bool.isRequired,
 }
 
-function ActionLinks(isAuthed) {
+function NavLinks ({isAuthed}) {
   return isAuthed === true
-  ? <ul>
-    <li>New Duck</li>
-    <li><Link to='/logout'>{'Logout'}</Link></li>
-  </ul>
-  : <ul>
-    <li><Link to='/home'>{'Home'}</Link></li>
-    <li><Link to='/auth'>{'Authenticate'}</Link></li>
-  </ul>
+    ? <ul>
+        <li><Link to='/' className={link}>{'Home'}</Link></li>
+      </ul>
+    : <noscript />
 }
 
-export default function Navigation (isAuthed) {
+function ActionLinks ({isAuthed}) {
+  return isAuthed === true
+    ? <ul>
+        <li>NEW DUCK</li>
+        <li><Link to='/logout' className={link}>{'Logout'}</Link></li>
+      </ul>
+    : <ul>
+        <li><Link to='/' className={link}>{'Home'}</Link></li>
+        <li><Link to='/auth' className={link}>{'Authenticate'}</Link></li>
+      </ul>
+}
+
+export default function Navigation ({isAuthed}) {
   return (
-    <div>
-      <nav>
-        <NavLinks isAuthed={isAuthed}/>
-        <ActionLinks   />
+    <div className={container}>
+      <nav className={navContainer}>
+        <NavLinks isAuthed={isAuthed} />
+        <ActionLinks isAuthed={isAuthed} />
       </nav>
     </div>
   )
