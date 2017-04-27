@@ -52,5 +52,10 @@ export default StyleSheet.create({
         "textAlign": "center",
         "lineHeight": 55,
         "fontWeight": "100"
+    },
+    "errorMsg": {
+        "color": "#FF7777",
+        "fontSize": 22,
+        "textAlign": "center"
     }
 });
