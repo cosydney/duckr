@@ -1,6 +1,6 @@
 import React from 'react'
 import { Authenticate } from 'components'
-import auth from 'helpers/auth'
+// import auth from 'helpers/auth'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from  'redux'
@@ -11,21 +11,18 @@ const AuthenticateContainer = React.createClass({
   propTypes: {
     isFetching: PropTypes.bool.isRequired,
     error: PropTypes.string.isRequired,
-    authUser: PropTypes.func.isRequired,
-    fetchingUser: PropTypes.func.isRequired,
-    fetchingUserFailure: PropTypes.func.isRequired,
-    fetchingUserSuccess: PropTypes.func.isRequired,
+    fetchAndHandleAuthedUser: PropTypes.func.isRequired,
   },
-  handleAuth () {
-    this.props.fetchingUser()
-    auth().then((user) => {
-      this.props.fetchingUserSuccess(user.uid, user, Date.now())
-      this.props.authUser(user.uid)
-    })
-    .catch((error) => this.props.fetchingUserFailure(error))
+  contextTypes: {
+    router: PropTypes.object.isRequired,
   },
+  handleAuth (e) {
+    e.preventDefault()
+    this.props.fetchAndHandleAuthedUser()
+    .then(() => {this.context.router.replace('feed')})
+   },
   render () {
-    // console.log('isFetching', this.props.isFetching)
+    console.log('isFetching', this.props.isFetching)
     return (
       <Authenticate
         isFetching={this.props.isFetching}
@@ -36,7 +33,7 @@ const AuthenticateContainer = React.createClass({
 })
 
 function mapStateToProps(state) {
-  // console.log('state', state)
+  console.log('state', state)
   return {
     isFetching: state.isFetching,
     error: state.error,

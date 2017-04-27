@@ -57,5 +57,8 @@ export default StyleSheet.create({
         "color": "#FF7777",
         "fontSize": 22,
         "textAlign": "center"
+    },
+    "text": {
+        "textAlign": "center"
     }
 });
